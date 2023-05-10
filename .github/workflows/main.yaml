@@ -1,0 +1,14 @@
+name: test
+
+on: workflow_dispatch
+
+jobs:
+    test-webhook:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Invoke webhook
+              uses: distributhor/workflow-webhook@v3
+              env:
+                webhook_type: 'json-extended'
+                webhook_url: ${{ vars.WEBHOOK_URL }}
+                webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
